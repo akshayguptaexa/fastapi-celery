@@ -15,3 +15,8 @@
 [2022-10-19 14:56:21,251: INFO/MainProcess] Events of group {task} enabled by remote.
 [2022-10-19 14:56:29,796: INFO/MainProcess] Received task: create_task[875ed20b-cc28-41c7-9a13-09d8608bfc0b]  
 [2022-10-19 14:56:29,808: INFO/ForkPoolWorker-1] Task create_task[875ed20b-cc28-41c7-9a13-09d8608bfc0b] succeeded in 0.004060333999973409s: True
+[2022-10-19 17:02:22,351: INFO/MainProcess] Connected to redis://redis:6379/0
+[2022-10-19 17:02:22,357: INFO/MainProcess] mingle: searching for neighbors
+[2022-10-19 17:02:23,373: INFO/MainProcess] mingle: all alone
+[2022-10-19 17:02:23,389: INFO/MainProcess] celery@45a983f017f1 ready.
+[2022-10-19 17:02:27,344: INFO/MainProcess] Events of group {task} enabled by remote.
