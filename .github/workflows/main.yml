@@ -1,0 +1,35 @@
+name: API CI-CD
+on:
+    # Triggers the workflow on push or pull request events but only for the main branch
+    push:
+      branches: [master]
+    pull_request:
+      branches: [master]
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Configure AWS CLI
+        uses: aws-actions/configure-aws-credentials@v1
+        with: 
+          aws-access-key-id: ${{ secrets.ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.SECRET_KEY }}
+          aws-region: ap-south-1
+      - name: ECR Login
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v1
+      - name:  Build and push Docker Image to ECR
+        env:
+          REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          REPOSITORY: sandbox-exaindia-hackathon-terraformnoobs
+          RANDOM_TAG: ${{ github.sha }}
+        run: |
+        docker-compose up -d --build
+        docker tag fastapi-celery-dashboard:latest $REGISTRY/$REPOSITORY:fastapi-celery-dashboard${{IMAGE_TAG}}
+        docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:fastapi-celery-web${{IMAGE_TAG}}
+        docker tag fastapi-celery-worker:latest $REGISTRY/$REPOSITORY:fastapi-celery-worker${{IMAGE_TAG}}
+        docker push $REGISTRY/$REPOSITORY:fastapi-celery-dashboard${{IMAGE_TAG}}
+        docker push $REGISTRY/$REPOSITORY:fastapi-celery-web${{IMAGE_TAG}}
+        docker push $REGISTRY/$REPOSITORY:fastapi-celery-worker${{IMAGE_TAG}}
