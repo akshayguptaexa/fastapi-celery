@@ -27,5 +27,5 @@ jobs:
           IMAGE_TAG: ${{ github.sha }}
         run: |
           docker-compose up -d --build
-          docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:$IMAGE_TAGE
-          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAGE
+          docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:$IMAGE_TAG
+          docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
