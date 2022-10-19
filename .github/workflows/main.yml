@@ -26,6 +26,6 @@ jobs:
           REPOSITORY: sandbox-exaindia-hackathon-terraformnoobs
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          docker-compose up -d --build
+          docker build ./project -t fastapi-celery-web:latest
           docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:$IMAGE_TAG
           docker push $REGISTRY/$REPOSITORY:$IMAGE_TAG
