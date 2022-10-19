@@ -27,9 +27,9 @@ jobs:
           RANDOM_TAG: ${{ github.sha }}
         run: |
           docker-compose up -d --build
-          docker tag fastapi-celery-dashboard:latest $REGISTRY/$REPOSITORY:fastapi-celery-dashboard${{RANDOM_TAG}}
-          docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:fastapi-celery-web${{RANDOM_TAG}}
-          docker tag fastapi-celery-worker:latest $REGISTRY/$REPOSITORY:fastapi-celery-worker${{RANDOM_TAG}}
-          docker push $REGISTRY/$REPOSITORY:fastapi-celery-dashboard${{RANDOM_TAG}}
-          docker push $REGISTRY/$REPOSITORY:fastapi-celery-web${{RANDOM_TAG}}
-          docker push $REGISTRY/$REPOSITORY:fastapi-celery-worker${{RANDOM_TAG}}
+          docker tag fastapi-celery-dashboard:latest $REGISTRY/$REPOSITORY:fastapi-celery-dashboard$RANDOM_TAG
+          docker tag fastapi-celery-web:latest $REGISTRY/$REPOSITORY:fastapi-celery-web$RANDOM_TAG
+          docker tag fastapi-celery-worker:latest $REGISTRY/$REPOSITORY:fastapi-celery-worker$RANDOM_TAG
+          docker push $REGISTRY/$REPOSITORY:fastapi-celery-dashboard$RANDOM_TAG
+          docker push $REGISTRY/$REPOSITORY:fastapi-celery-web$RANDOM_TAG
+          docker push $REGISTRY/$REPOSITORY:fastapi-celery-worker$RANDOM_TAG
